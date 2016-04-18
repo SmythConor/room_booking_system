@@ -41,10 +41,9 @@ public class RoomGenerator {
 
 		Room[] rooms = generateDefaultRooms();
 
-
 		for(int dayNumber = 1; dayNumber <= MAX_DAYS; dayNumber++) {
-		String fileName = FILE_DIR + dayNumber + ".xml";
-		File file = new File(fileName);
+			String fileName = FILE_DIR + dayNumber + ".xml";
+			File file = new File(fileName);
 			Day day = new Day();
 
 			day.setDay(dayNumber);

@@ -4,6 +4,7 @@ import javax.jws.WebService;
 
 import java.util.LinkedList;
 
+import com.roombooking.model.Day;
 import com.roombooking.model.Room;
 import com.roombooking.info.RoomInfo;
 
@@ -16,5 +17,9 @@ public class RoomBookingServiceImpl implements RoomBookingService {
 		Room[] rooms = generateDefaultRooms();
 
 		return rooms;
+	}
+
+	public Day[] getRoomForWeek() {
+		
 	}
 }

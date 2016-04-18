@@ -13,4 +13,5 @@ import com.roombooking.model.Room;
 @SOAPBinding(style = RPC)
 public interface RoomBookingService {
 	@WebMethod Room[] getManagedRooms();
+	@WebMethod Day[] getRoomForWeek();
 }
