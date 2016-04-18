@@ -18,7 +18,7 @@ public class RoomBookingClient {
 		Service service = Service.create(url, qname);
 
 		RoomBookingService roomBookingService = service.getPort(RoomBookingService.class);
-		Room[] rooms = roomBookingService.getRooms();
+		Room[] rooms = roomBookingService.getManagedRooms();
 
 		for(Room room : rooms) {
 			System.out.println(room);

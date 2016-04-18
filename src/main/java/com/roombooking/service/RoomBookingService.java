@@ -12,5 +12,5 @@ import com.roombooking.model.Room;
 @WebService
 @SOAPBinding(style = RPC)
 public interface RoomBookingService {
-	@WebMethod Room[] getRooms();
+	@WebMethod Room[] getManagedRooms();
 }

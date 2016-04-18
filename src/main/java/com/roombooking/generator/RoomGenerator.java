@@ -1,13 +1,13 @@
 package com.roombooking.generator;
 
 import java.io.File;
+import javax.xml.bind.Marshaller;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.PropertyException;
-import javax.xml.bind.Marshaller;
 
+import com.roombooking.model.Day;
 import com.roombooking.model.Room;
-import com.roombooking.info.RoomInfo;
 import static com.roombooking.info.Info.FILE_DIR;
 import static com.roombooking.info.Info.MAX_DAYS;
 
@@ -16,10 +16,8 @@ public class RoomGenerator {
 	private static Marshaller jaxbMarshaller;
 
 	public static void generateRooms() {
-		Room[] rooms = RoomInfo.generateRooms();
-
 		try {
-			jaxbContext = JAXBContext.newInstance(Room.class);
+			jaxbContext = JAXBContext.newInstance(Day.class);
 		} catch(JAXBException e) {
 			System.out.println("Error instantiating");
 			e.printStackTrace();
@@ -41,21 +39,33 @@ public class RoomGenerator {
 
 		System.out.println("Initialising data...");
 
+		Room[] rooms = generateDefaultRooms();
+
+
 		for(int dayNumber = 1; dayNumber <= MAX_DAYS; dayNumber++) {
-			String fileName = FILE_DIR + dayNumber + ".xml";
+		String fileName = FILE_DIR + dayNumber + ".xml";
+		File file = new File(fileName);
+			Day day = new Day();
 
-			File file = new File(fileName);
-
-			for(int roomIndex = 0; roomIndex < rooms.length; roomIndex++) {
-				try {
-					jaxbMarshaller.marshal(rooms[roomIndex], file);
-				} catch(JAXBException e) {
-					System.out.println("Error writing to file " + file);
-					e.printStackTrace();
-				}
+			day.setDay(dayNumber);
+			day.setRooms(rooms);
+			try {
+				jaxbMarshaller.marshal(day, file);
+			} catch(JAXBException e) {
+				System.out.println("Error writing to file " + file);
+				e.printStackTrace();
 			}
 		}
 
 		System.out.println("Finished writing data");
+	}
+
+	public static Room[] generateDefaultRooms() {
+		Room r1 = new Room("L221", 50);
+		Room r2 = new Room("XG14", 34);
+		Room r3 = new Room("T101", 400);
+		Room r4 = new Room("CG04", 40);
+
+		return new Room[] {r1, r2, r3, r4};
 	}
 }
