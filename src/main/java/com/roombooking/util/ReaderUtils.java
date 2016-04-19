@@ -9,24 +9,48 @@ import javax.xml.bind.PropertyException;
 
 import com.roombooking.model.Day;
 import com.roombooking.model.Room;
+import static com.roombooking.info.Info.FILE_DIR;
+import static com.roombooking.info.Info.MAX_DAYS;
 
 public class ReaderUtils {
 	private static JAXBContext jaxbContext;
 	private static Marshaller jaxbMarshaller;
+	private static Unmarshaller jaxbUnmarshaller;
 
 	public static Day readDay(Integer dayNumber) {
 		String fileName = FILE_DIR + dayNumber + ".xml";
 
-		readInit(new Class<Day>());
+		readInit(Day.class);
 
 		File file = new File(fileName);
 		
 		try {
-			return (Day) jaxbMarshaller.unmarshal(file);
+			return (Day) jaxbUnmarshaller.unmarshal(file);
 		} catch(JAXBException e) {
 			System.out.println("Error reading from file " + file);
 			e.printStackTrace();
 		}
+
+		return null;
+	}
+
+	public static Day[] getRoomForWeek(String roomName) {
+		Day[] days = new Day[MAX_DAYS];
+
+		for(int dayIndex = 1; dayIndex <= MAX_DAYS; dayIndex++) {
+			Day day = readDay(dayIndex);
+
+			Room room = day.getRoom(roomName);
+
+			Day temp = new Day();
+
+			temp.setDay(dayIndex);
+			temp.setRooms(new Room[] {room});
+
+			days[dayIndex - 1] = temp;
+		}
+
+		return days;
 	}
 
 	private static void readInit(Class<?> clazz) {
@@ -38,7 +62,7 @@ public class ReaderUtils {
 		}
 
 		try {
-			jaxbMarshaller = jaxbContext.createUnmarshaller();
+			jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		} catch(JAXBException e) {
 			System.out.println("Error creating unmarshaller");
 			e.printStackTrace();

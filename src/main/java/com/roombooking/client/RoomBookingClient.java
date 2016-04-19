@@ -6,6 +6,7 @@ import javax.xml.ws.Service;
 
 import java.util.LinkedList;
 
+import com.roombooking.model.Day;
 import com.roombooking.model.Room;
 import com.roombooking.service.RoomBookingService;
 
@@ -19,9 +20,14 @@ public class RoomBookingClient {
 
 		RoomBookingService roomBookingService = service.getPort(RoomBookingService.class);
 		Room[] rooms = roomBookingService.getManagedRooms();
+		Day[] days = roomBookingService.getRoomForWeek("XG14");
 
 		for(Room room : rooms) {
 			System.out.println(room);
+		}
+
+		for(Day day : days) {
+			System.out.println(day);
 		}
 	}
 }

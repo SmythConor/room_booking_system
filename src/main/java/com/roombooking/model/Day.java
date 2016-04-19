@@ -32,13 +32,23 @@ public class Day implements Serializable {
 		return rooms;
 	}
 
+	public Room getRoom(String name) {
+		for(Room room : rooms) {
+			if(room.getName().equals(name)) {
+				return room;
+			}
+		}
+
+		return null;
+	}
+
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 
 		builder.append("Day [day = ");
 		builder.append(day);
-		builder.append("Rooms [");
+		builder.append(" Rooms [");
 		for(Room room : rooms) {
 			builder.append(room);
 		}

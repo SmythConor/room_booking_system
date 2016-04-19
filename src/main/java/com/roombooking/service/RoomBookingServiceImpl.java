@@ -7,6 +7,8 @@ import java.util.LinkedList;
 import com.roombooking.model.Day;
 import com.roombooking.model.Room;
 import com.roombooking.info.RoomInfo;
+import com.roombooking.util.ReaderUtils;
+import static com.roombooking.util.ReaderUtils.readDay;
 
 import static com.roombooking.generator.RoomGenerator.generateDefaultRooms;
 
@@ -19,7 +21,7 @@ public class RoomBookingServiceImpl implements RoomBookingService {
 		return rooms;
 	}
 
-	public Day[] getRoomForWeek() {
-		
+	public Day[] getRoomForWeek(String roomName) {
+		return ReaderUtils.getRoomForWeek(roomName);
 	}
 }
