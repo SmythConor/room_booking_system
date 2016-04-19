@@ -7,7 +7,6 @@ import javax.xml.ws.Service;
 
 import java.util.Scanner;
 
-import com.roombooking.model.Day;
 import com.roombooking.model.Room;
 import com.roombooking.model.Rooms;
 import com.roombooking.model.Bookings;

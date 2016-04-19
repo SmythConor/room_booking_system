@@ -4,6 +4,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import java.io.Serializable;
 
+/**
+ * Class to represent all bookings
+ * @author Conor Smyth <cnrsmyth@gmail.com>
+ * @since 2016-04-19
+ */
 @XmlRootElement
 public class Bookings implements Serializable {
 	private static final long serialVersionUID = 42L;
@@ -19,6 +24,10 @@ public class Bookings implements Serializable {
 		this.counter = 0;
 	}
 
+	/**
+	 * Add a booking 
+	 * @param booking the booking to add
+	 */
 	public void addBooking(Booking booking) {
 		bookings[counter] = booking;
 
@@ -29,6 +38,11 @@ public class Bookings implements Serializable {
 		return this;
 	}
 
+	/**
+	 * Get bookings for a room
+	 * @param roomName the name of the room
+	 * @return booking for room with name supplied
+	 */
 	public Bookings getBookingsForRoom(String roomName) {
 		Bookings bookings = new Bookings();
 
@@ -41,6 +55,11 @@ public class Bookings implements Serializable {
 		return bookings;
 	}
 
+	/**
+	 * Check does the booking exist
+	 * @param booking the booking to check
+	 * @return true if the booking already exists
+	 */
 	public boolean isBooked(Booking booking) {
 		for(Booking b : bookings) {
 			if(b != null && booking.equals(b)) {
@@ -52,19 +71,21 @@ public class Bookings implements Serializable {
 	}
 
 	@Override
-		public String toString() {
-			StringBuilder builder = new StringBuilder();
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
 
-			builder.append("Bookings \n[\n");
-			for(Booking booking : bookings) {
-				if(booking != null) {
-					builder.append("\t");
-					builder.append(booking);
-					builder.append("\n");
-				}
+		builder.append("Bookings \n[\n");
+
+		for(Booking booking : bookings) {
+			if(booking != null) {
+				builder.append("\t");
+				builder.append(booking);
+				builder.append("\n");
 			}
-			builder.append("]");
-
-			return builder.toString();
 		}
+
+		builder.append("]");
+
+		return builder.toString();
+	}
 }

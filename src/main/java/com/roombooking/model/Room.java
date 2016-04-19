@@ -4,6 +4,11 @@ import javax.xml.bind.annotation.XmlElement;
 
 import java.io.Serializable;
 
+/**
+ * Class to represent a room
+ * @author Conor Smyth <cnrsmyth@gmail.com>
+ * @since 2016-04-18
+ */
 public class Room implements Serializable {
 	private static final long serialVersionUID = 42L;
 

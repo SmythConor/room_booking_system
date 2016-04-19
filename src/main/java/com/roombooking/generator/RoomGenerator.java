@@ -2,7 +2,6 @@ package com.roombooking.generator;
 
 import javax.xml.bind.Marshaller;
 
-import com.roombooking.model.Day;
 import com.roombooking.model.Room;
 import com.roombooking.model.Rooms;
 import com.roombooking.util.JaxbMarshaller;

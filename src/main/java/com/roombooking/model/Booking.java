@@ -4,6 +4,11 @@ import javax.xml.bind.annotation.XmlElement;
 
 import java.io.Serializable;
 
+/**
+ * Class to represent a booking
+ * @author Conor Smyth <cnrsmyth@gmail.com>
+ * @since 2016-04-18
+ */
 public class Booking implements Serializable {
 	private static final long serialVersionUID = 42L;
 
@@ -62,7 +67,7 @@ public class Booking implements Serializable {
 		Booking booking = (Booking) obj;
 
 		return this.roomName.equals(booking.getRoom())
-					 && this.time.equals(booking.getTime())
-					 && this.day == booking.getDay();
+			&& this.time.equals(booking.getTime())
+			&& this.day == booking.getDay();
 	}
 }

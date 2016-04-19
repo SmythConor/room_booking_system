@@ -5,6 +5,11 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import java.io.Serializable;
 
+/**
+ * class to represent an array of rooms
+ * @author Conor Smyth <cnrsmyth@gmail.com>
+ * @since 2016-04-19
+ */
 @XmlRootElement
 public class Rooms implements Serializable {
 	private static final long serialVersionUID = 42L;
@@ -20,16 +25,6 @@ public class Rooms implements Serializable {
 
 	public Room[] getRooms() {
 		return rooms;
-	}
-
-	public Room getRoom(String name) {
-		for(Room room : rooms) {
-			if(room.getName().equals(name)) {
-				return room;
-			}
-		}
-
-		return null;
 	}
 
 	@Override
