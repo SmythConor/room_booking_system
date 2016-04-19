@@ -7,7 +7,7 @@ import com.roombooking.service.RoomBookingServiceImpl;
 
 public class RoomBookingServicePublisher {
 	public static void main(String[] args) {
-		RoomGenerator.generateRooms();
+		RoomGenerator.generateManagedRooms();
 
 		System.out.println("Server started...");
 

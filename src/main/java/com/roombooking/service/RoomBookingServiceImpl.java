@@ -2,26 +2,51 @@ package com.roombooking.service;
 
 import javax.jws.WebService;
 
-import java.util.LinkedList;
-
 import com.roombooking.model.Day;
 import com.roombooking.model.Room;
+import com.roombooking.model.Rooms;
 import com.roombooking.info.RoomInfo;
-import com.roombooking.util.ReaderUtils;
-import static com.roombooking.util.ReaderUtils.readDay;
-
-import static com.roombooking.generator.RoomGenerator.generateDefaultRooms;
+import com.roombooking.util.JaxbMarshaller;
 
 @WebService(endpointInterface = "com.roombooking.service.RoomBookingService")
 public class RoomBookingServiceImpl implements RoomBookingService {
+	
+	/**
+	* {@inheritDoc}
+	*/
+	public Rooms getManagedRooms() {
+		JaxbMarshaller jaxbMarshaller = new JaxbMarshaller();
 
-	public Room[] getManagedRooms() {
-		Room[] rooms = generateDefaultRooms();
+		Rooms rooms = jaxbMarshaller.getManagedRooms();
 
 		return rooms;
 	}
 
-	public Day[] getRoomForWeek(String roomName) {
-		return ReaderUtils.getRoomForWeek(roomName);
+	/**
+	 * {@inheritDoc}
+	 */
+	public Room getRoomForWeek(String roomName) {
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public String isRoomAvailable(String roomName, String time, Integer day) {
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public String bookRoom(String roomName, String time, Integer day) {
+		return null;
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	public String registerInterest(String roomName) {
+		return null;
 	}
 }

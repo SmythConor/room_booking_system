@@ -6,7 +6,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 
 import java.io.Serializable;
 
-@XmlRootElement
+//@XmlRootElement
 public class Room implements Serializable {
 	private static final long serialVersionUID = 42L;
 
