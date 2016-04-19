@@ -9,6 +9,8 @@ import java.util.LinkedList;
 
 import com.roombooking.model.Room;
 import com.roombooking.model.Rooms;
+import com.roombooking.model.Bookings;
+import com.roombooking.exception.RoomNotFoundException;
 
 /**
  * Service interface to define endpoints
@@ -30,7 +32,7 @@ public interface RoomBookingService {
 	 * @param roomName The name of the room
 	 * @return Not sure yet
 	 */
-	@WebMethod Room getRoomForWeek(String roomName);
+	@WebMethod Bookings getRoomForWeek(String roomName) throws RoomNotFoundException;
 
 	/**
 	 * Check is a room available for a certain time and day
@@ -39,7 +41,8 @@ public interface RoomBookingService {
 	 * @param day the day number
 	 * @return indication of room availability
 	 */
-	@WebMethod String isRoomAvailable(String roomName, String time, Integer day);
+	@WebMethod String isRoomAvailable(String roomName, String time, Integer day) 
+			throws RoomNotFoundException;
 
 	/**
 	 * Book a room
@@ -48,12 +51,13 @@ public interface RoomBookingService {
 	 * @param day the day to book
 	 * @return ack of request or notification that room is booked
 	 */
-	@WebMethod String bookRoom(String roomName, String time, Integer day);
+	@WebMethod String bookRoom(String roomName, String time, Integer day) 
+			throws RoomNotFoundException;
 
 	/**
 	 * Register interest in a room in case the room is made available
 	 * @param roomName the name of the room
 	 * @return confirmation of registration 
 	 */
-	@WebMethod String registerInterest(String roomName);
+	@WebMethod String registerInterest(String roomName) throws RoomNotFoundException;
 }

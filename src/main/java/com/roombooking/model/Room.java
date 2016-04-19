@@ -1,12 +1,9 @@
 package com.roombooking.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlAccessorType;
 
 import java.io.Serializable;
 
-//@XmlRootElement
 public class Room implements Serializable {
 	private static final long serialVersionUID = 42L;
 
@@ -40,6 +37,6 @@ public class Room implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Room = [ name = " + name + ", capacity = " + capacity + "]";
+		return "Room = [name = " + name + ", capacity = " + capacity + "]";
 	}
 }

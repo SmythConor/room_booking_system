@@ -1,15 +1,15 @@
-BIN=/home/conor/work/college/year4/room_booking_system/bin
+BIN=".:/home/conor/work/college/year4/room_booking_system/bin"
 
 if [ ! -f "$BIN" ]; then
-	cd $BIN
+	#cd $BIN
 
-	while getopts ":p" opt; do
+	while getopts ":pc" opt; do
 		case $opt in
 			p)
-				java com.roombooking.publisher.RoomBookingServicePublisher
+				java -cp $BIN com.roombooking.publisher.RoomBookingServicePublisher
 				;;
 			c)
-				java com.roombooking.client.RoomBookingClient
+				java -cp $BIN com.roombooking.client.RoomBookingClient
 				;;
 			\?)
 				echo "Invalid option -$OPTARG" >&2

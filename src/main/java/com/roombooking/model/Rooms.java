@@ -1,8 +1,7 @@
 package com.roombooking.model;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import java.io.Serializable;
 
@@ -37,10 +36,12 @@ public class Rooms implements Serializable {
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 
-		builder.append("Rooms [");
+		builder.append("Rooms \n[\n");
 
 		for(Room room : rooms) {
+			builder.append("\t");
 			builder.append(room);
+			builder.append("\n");
 		}
 
 		builder.append("]");
