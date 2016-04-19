@@ -39,7 +39,7 @@ public class RoomBookingServiceImpl implements RoomBookingService {
 			return "Room not found";
 		}
 
-		Bookings temp = bookings.getBookings();
+		Bookings temp = bookings.getBookingsForRoom(roomName);
 
 		return temp.toString();
 	}

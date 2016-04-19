@@ -76,7 +76,7 @@ public class RoomBookingClient {
 
 				String response = roomBookingService.isRoomAvailable(roomName, time, day);
 
-				System.out.println(response);
+				System.out.println("\n" + response + "\n");
 			} else if(choice == 4) {
 				scanner.nextLine();
 
@@ -91,7 +91,7 @@ public class RoomBookingClient {
 
 				String response = roomBookingService.bookRoom(roomName, time, day);
 
-				System.out.println(response);
+				System.out.println("\n" + response + "\n");
 			}
 
 			printSeparator();

@@ -17,14 +17,6 @@ public class Bookings implements Serializable {
 		bookings = new Booking[MAX_BOOKINGS];
 
 		this.counter = 0;
-
-		Booking booking = new Booking();
-
-		booking.setRoom("XG14");
-		booking.setTime("12:00");
-		booking.setDay(1);
-
-		addBooking(booking);
 	}
 
 	public void addBooking(Booking booking) {
@@ -41,7 +33,7 @@ public class Bookings implements Serializable {
 		Bookings bookings = new Bookings();
 
 		for(Booking booking : this.bookings) {
-			if(booking.getRoom().equals(roomName)) {
+			if(booking != null && booking.getRoom().equals(roomName)) {
 				bookings.addBooking(booking);
 			}
 		}
