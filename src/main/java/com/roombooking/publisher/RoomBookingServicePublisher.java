@@ -1,12 +1,18 @@
 package com.roombooking.publisher;
 
 import javax.xml.ws.Endpoint;
-import com.roombooking.generator.RoomGenerator;
 import com.roombooking.service.RoomBookingServiceImpl;
 
+import static com.roombooking.generator.RoomGenerator.generateManagedRooms;
+
+/**
+* Publisher for the WSDL
+* @author Conor Smyth <cnrsmyth@gmail.com>
+* @since 2016-04-18
+*/
 public class RoomBookingServicePublisher {
 	public static void main(String[] args) {
-		RoomGenerator.generateManagedRooms();
+		generateManagedRooms();
 
 		System.out.println("Server started...");
 
