@@ -36,35 +36,70 @@ public class RoomBookingClient {
 			System.out.println("Please select and option: ");
 			System.out.println("1) Get managed Rooms");
 			System.out.println("2) Get timetable for room");
+			System.out.println("3) Check room availability");
+			System.out.println("4) Make a booking");
 
 			int choice = scanner.nextInt();
 			printSeparator();
 
 			if(choice == 1) {
 				System.out.println("Getting managed rooms: ");
+
 				Rooms rooms = roomBookingService.getManagedRooms();
+
 				System.out.println(rooms);
 			} else if(choice == 2) {
 				System.out.print("Enter room name: ");
+
 				scanner.nextLine();
+				
 				String roomName = scanner.nextLine();
 
 				System.out.println("Getting room timetable for week: ");
 
-				try {
-					Bookings r = roomBookingService.getRoomForWeek(roomName);
+				Object roomForWeek = roomBookingService.getRoomForWeek(roomName);
 
-					System.out.println(r);
-				} catch(RoomNotFoundException e) {
-					System.out.println("Room " + roomName + " does not exist");
-				}
+				System.out.println(roomForWeek);
+			} else if(choice == 3) {
+				scanner.nextLine();
+
+				System.out.print("Enter room name: ");
+				String roomName = scanner.nextLine();
+
+				System.out.print("Enter time(09:00-22:00): ");
+				String time = scanner.nextLine();
+
+				System.out.print("Enter day(1-5): ");
+				Integer day = scanner.nextInt();
+
+				System.out.println(roomName + " " + time + " " + day);
+
+				String response = roomBookingService.isRoomAvailable(roomName, time, day);
+
+				System.out.println(response);
+			} else if(choice == 4) {
+				scanner.nextLine();
+
+				System.out.print("Enter room name: ");
+				String roomName = scanner.nextLine();
+
+				System.out.print("Enter time(09:00-22:00): ");
+				String time = scanner.nextLine();
+
+				System.out.print("Enter day(1-5): ");
+				Integer day = scanner.nextInt();
+
+				String response = roomBookingService.bookRoom(roomName, time, day);
+
+				System.out.println(response);
 			}
 
 			printSeparator();
 		}
 	}
 
+	
 	private static void printSeparator() {
-		System.out.print("********************************************\n");
+		System.out.print("\n********************************************\n");
 	}
 }

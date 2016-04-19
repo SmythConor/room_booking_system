@@ -56,4 +56,13 @@ public class Booking implements Serializable {
 
 		return builder.toString();
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		Booking booking = (Booking) obj;
+
+		return this.roomName.equals(booking.getRoom())
+					 && this.time.equals(booking.getTime())
+					 && this.day == booking.getDay();
+	}
 }

@@ -32,7 +32,7 @@ public interface RoomBookingService {
 	 * @param roomName The name of the room
 	 * @return Not sure yet
 	 */
-	@WebMethod Bookings getRoomForWeek(String roomName) throws RoomNotFoundException;
+	@WebMethod Object getRoomForWeek(String roomName);
 
 	/**
 	 * Check is a room available for a certain time and day
@@ -41,8 +41,7 @@ public interface RoomBookingService {
 	 * @param day the day number
 	 * @return indication of room availability
 	 */
-	@WebMethod String isRoomAvailable(String roomName, String time, Integer day) 
-			throws RoomNotFoundException;
+	@WebMethod String isRoomAvailable(String roomName, String time, Integer day);
 
 	/**
 	 * Book a room
@@ -51,8 +50,7 @@ public interface RoomBookingService {
 	 * @param day the day to book
 	 * @return ack of request or notification that room is booked
 	 */
-	@WebMethod String bookRoom(String roomName, String time, Integer day) 
-			throws RoomNotFoundException;
+	@WebMethod String bookRoom(String roomName, String time, Integer day);
 
 	/**
 	 * Register interest in a room in case the room is made available

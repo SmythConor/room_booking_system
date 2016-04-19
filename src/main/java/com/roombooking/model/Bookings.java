@@ -49,6 +49,16 @@ public class Bookings implements Serializable {
 		return bookings;
 	}
 
+	public boolean isBooked(Booking booking) {
+		for(Booking b : bookings) {
+			if(b != null && booking.equals(b)) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
 	@Override
 		public String toString() {
 			StringBuilder builder = new StringBuilder();
