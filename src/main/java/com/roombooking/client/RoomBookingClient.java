@@ -1,18 +1,21 @@
 package com.roombooking.client;
 
+import javax.xml.ws.Service;
+import javax.xml.namespace.QName;
+
 import java.net.URL;
 import java.net.MalformedURLException;
-import javax.xml.namespace.QName;
-import javax.xml.ws.Service;
 
 import java.util.Scanner;
 
-import com.roombooking.model.Room;
 import com.roombooking.model.Rooms;
-import com.roombooking.model.Bookings;
-import com.roombooking.exception.RoomNotFoundException;
 import com.roombooking.service.RoomBookingService;
 
+/**
+* Client for the room booking SOAP web service
+* @author Conor Smyth <cnrsmyth@gmail.com>
+* @since 2016-04-18
+*/
 public class RoomBookingClient {
 	private static URL url;
 

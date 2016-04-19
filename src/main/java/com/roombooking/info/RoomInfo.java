@@ -1,13 +1,21 @@
 package com.roombooking.info;
 
-import java.util.List;
-import java.util.LinkedList;
-
 import com.roombooking.model.Room;
+import static com.roombooking.generator.RoomGenerator.generateDefaultRooms;
 
+/**
+ * Class to hold room info
+ * @author Conor Smyth <cnrsmyth@gmail.com>
+ * @since 2016-04-18
+ */
 public class RoomInfo {
+	/**
+	 * Check if the room supplied is a room
+	 * @param roomName the name of the room
+	 * @return true if the room exists
+	 */
 	public static boolean isRoom(String roomName) {
-		Room[] rooms = generateRooms();
+		Room[] rooms = generateDefaultRooms();
 
 		boolean exists = false;
 
@@ -18,22 +26,5 @@ public class RoomInfo {
 		}
 
 		return exists;
-	}
-	public static Room[] generateRooms() {
-		Room r1 = new Room("L221", 50);
-		Room r2 = new Room("XG14", 34);
-		Room r3 = new Room("T101", 400);
-		Room r4 = new Room("CG04", 40);
-
-		return new Room[]{r1, r2, r3, r4};
-	}
-
-	public static Room errorRoom() {
-		Room err = new Room();
-
-		err.setName("Room not found");
-		err.setCapacity(0);
-
-		return err;
 	}
 }
