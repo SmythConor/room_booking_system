@@ -2,23 +2,24 @@ package com.roombooking.service;
 
 import javax.jws.WebService;
 
-import com.roombooking.model.Day;
-import com.roombooking.model.Room;
 import com.roombooking.model.Rooms;
 import com.roombooking.model.Booking;
 import com.roombooking.model.Bookings;
-import com.roombooking.info.RoomInfo;
 import com.roombooking.util.JaxbMarshaller;
-import com.roombooking.exception.RoomNotFoundException;
 
 import static com.roombooking.info.RoomInfo.isRoom;
-import static com.roombooking.info.RoomInfo.errorRoom;
 import static com.roombooking.util.Validation.validTime;
 import static com.roombooking.util.Validation.validDay;
 
+/**
+ * Room Service implementation
+ * @author Conor Smyth <cnrsmyth@gmail.com>
+ * @since 2016-04-19
+ */
 @WebService(endpointInterface = "com.roombooking.service.RoomBookingService")
 public class RoomBookingServiceImpl implements RoomBookingService {
 	private Bookings bookings = new Bookings();
+	private Bookings pendingBookings = new Bookings();
 
 	/**
 	 * {@inheritDoc}
@@ -107,7 +108,15 @@ public class RoomBookingServiceImpl implements RoomBookingService {
 	/**
 	 * {@inheritDoc}
 	 */
-	public String registerInterest(String roomName) throws RoomNotFoundException {
-		return null;
+	public String registerInterest(String roomName, String time, Integer day) {
+		Booking booking = new Booking();
+
+		booking.setRoom(roomName);
+		booking.setTime(time);
+		booking.setDay(day);
+
+		pendingBookings.addBooking(booking);
+
+		return "Interest registered";
 	}
 }

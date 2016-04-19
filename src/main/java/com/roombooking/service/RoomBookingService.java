@@ -3,14 +3,10 @@ package com.roombooking.service;
 import javax.jws.WebMethod;
 import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
-import static javax.jws.soap.SOAPBinding.Style.RPC;
 
-import java.util.LinkedList;
-
-import com.roombooking.model.Room;
 import com.roombooking.model.Rooms;
-import com.roombooking.model.Bookings;
-import com.roombooking.exception.RoomNotFoundException;
+
+import static javax.jws.soap.SOAPBinding.Style.RPC;
 
 /**
  * Service interface to define endpoints
@@ -57,5 +53,5 @@ public interface RoomBookingService {
 	 * @param roomName the name of the room
 	 * @return confirmation of registration 
 	 */
-	@WebMethod String registerInterest(String roomName) throws RoomNotFoundException;
+	@WebMethod String registerInterest(String roomName, String time, Integer day);
 }
